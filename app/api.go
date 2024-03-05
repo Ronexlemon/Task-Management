@@ -10,7 +10,7 @@ import (
 
 //create a new Task
 
-func newTaskHandler(c *gin.Context){
+func NewTaskHandler(c *gin.Context){
 	var newTask model.Task
 	if err := c.ShouldBindJSON(&newTask);err !=nil{
 		c.JSON(http.StatusBadRequest, gin.H{"error":err.Error()})
@@ -51,6 +51,7 @@ func UpdateTaskHandler(c *gin.Context){
 		c.JSON(http.StatusNotFound,gin.H{"error":"Task not found"})
 		return
 	}
+	task.ID = xid.New().String()
 	model.Tasks[index] = task
 	c.JSON(http.StatusOK,task)
 }
