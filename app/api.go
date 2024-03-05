@@ -54,3 +54,24 @@ func UpdateTaskHandler(c *gin.Context){
 	model.Tasks[index] = task
 	c.JSON(http.StatusOK,task)
 }
+
+//deleting
+
+func DeleteTaskHandler(c *gin.Context){
+	id := c.Param("id")
+
+	index :=-1
+
+	for i:=0; i<len(model.Tasks);i++{
+		if model.Tasks[i].ID == id{
+			index =i
+
+		}
+		
+	}
+	if index == -1{
+		c.JSON(http.StatusNotFound,gin.H{"error": "Task not found"})
+	}
+	model.Tasks = append(model.Tasks[:index],model.Tasks[index+1:]...)
+	c.JSON(http.StatusOK,gin.H{"message":" Task has been deleted"})
+}
