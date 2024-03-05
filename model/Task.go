@@ -12,7 +12,7 @@ type Task struct{
 	Assignee string `json:"assignee"`
 }
 
-var tasks = []Task{
+var Tasks = []Task{
 	{ID:"1",Title: "Code the codes",Priority: strconv.Itoa(3),Status: "in Progress",Assignee: "john doe"},
 	{ID:"1",Title: "Get the bag",Priority: strconv.Itoa(1),Status: "in Progress",Assignee: "lemonr lemonr"},
 	{ID:"1",Title: "All the goodies",Priority: strconv.Itoa(2),Status: "To do",Assignee: "john heck"},
