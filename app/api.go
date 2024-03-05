@@ -23,3 +23,9 @@ func newTaskHandler(c *gin.Context){
 
 
 }
+
+//retrieving all the list of tasks
+
+func GetTaskHandler(c *gin.Context){
+	c.JSON(http.StatusOK,model.Tasks)
+}
